@@ -3,7 +3,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "gitlab" do |conf|
     conf.vm.box = "centos/7"
     conf.vm.hostname = 'gitlab.example.com'
-    conf.vm.network "private_network", ip: "172.24.0.11"
+    conf.vm.network "private_network", ip: "192.168.56.11"
     conf.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "jenkins" do |conf|
     conf.vm.box = "centos/7"
     conf.vm.hostname = 'jenkins.example.com'
-    conf.vm.network "private_network", ip: "172.24.0.12"
+    conf.vm.network "private_network", ip: "192.168.56.12"
     conf.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.cpus = 2
@@ -27,8 +27,8 @@ $inline_script = <<SCRIPT
 # Inline Script starts
 cat <<EOF > /etc/hosts
 127.0.0.1   localhost localhost.localdomain
-172.24.0.11 gitlab.example.com gitlab
-172.24.0.12 jenkins.example.com jenkins
+192.168.56.11 gitlab.example.com gitlab
+192.168.56.12 jenkins.example.com jenkins
 EOF
 
 yum install -y git
